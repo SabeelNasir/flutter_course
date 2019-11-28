@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../users/get-users.dart';
+import '../calculator/index.dart';
 
 class DrawerLayout extends StatelessWidget {
   @override
@@ -42,6 +43,14 @@ class DrawerLayout extends StatelessWidget {
                   context, MaterialPageRoute(builder: (context) => GetUsers()));
             },
           ),
+          ListTile(
+            leading: Icon(Icons.calendar_today),
+            title: Text('Calculator'),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => Calculator()));
+            },
+          )
         ],
       ),
     );

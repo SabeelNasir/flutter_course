@@ -52,7 +52,7 @@ class _GetUsersState extends State<GetUsers> {
   void initState() {
     super.initState();
     post = fetchPost();
-    employees = fetchEmployees();
+    //employees = fetchEmployees();
   }
 
   @override
@@ -66,36 +66,93 @@ class _GetUsersState extends State<GetUsers> {
                 future: post,
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
-                    return Card(
-                      margin: EdgeInsets.all(8.0),
-                      child: Column(
-                        children: <Widget>[
-                          ListTile(
-                            leading: Icon(Icons.rss_feed),
-                            title: Text(snapshot.data.title),
-                          ),
-                          ListBody(
+                    return Column(
+                      children: <Widget>[
+                        Card(
+                          margin: EdgeInsets.all(8.0),
+                          child: Column(
                             children: <Widget>[
-                              Center(
-                                child: Text(
-                                  'Body',
-                                  style: TextStyle(color: Colors.purple),
-                                ),
+                              ListTile(
+                                leading: Icon(Icons.rss_feed),
+                                title: Text(snapshot.data.title),
                               ),
-                              Row(
+                              ListBody(
                                 children: <Widget>[
-                                  Expanded(
-                                    child: Container(
-                                      child: Text(snapshot.data.body),
-                                      padding: EdgeInsets.all(8),
+                                  Center(
+                                    child: Text(
+                                      'Body',
+                                      style: TextStyle(color: Colors.purple),
                                     ),
-                                  )
+                                  ),
+                                  Row(
+                                    children: <Widget>[
+                                      Expanded(
+                                        child: Container(
+                                          child: Text(snapshot.data.body),
+                                          padding: EdgeInsets.all(8),
+                                        ),
+                                      )
+                                    ],
+                                  ),
                                 ],
-                              ),
+                              )
                             ],
-                          )
-                        ],
-                      ),
+                          ),
+                        ),
+                        //Doctor-Notes Card
+                        Card(
+                          margin: EdgeInsets.all(8.0),
+                          child: Column(
+                            children: <Widget>[
+                              ListTile(
+                                leading: Icon(Icons.note),
+                                title: Text('Focus'),
+                                trailing: Text('25 Nov | 15:15 PM'),
+                              ),
+                              ListBody(
+                                children: <Widget>[
+                                  Row(
+                                    children: <Widget>[
+                                      Expanded(
+                                        child: Container(
+                                          child: Text(snapshot.data.body),
+                                          padding: EdgeInsets.all(8),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
+                        ),
+                        Card(
+                          margin: EdgeInsets.all(8.0),
+                          child: Column(
+                            children: <Widget>[
+                              ListTile(
+                                leading: Icon(Icons.note),
+                                title: Text('Focus'),
+                                trailing: Text('25 Nov | 15:15 PM'),
+                              ),
+                              ListBody(
+                                children: <Widget>[
+                                  Row(
+                                    children: <Widget>[
+                                      Expanded(
+                                        child: Container(
+                                          child: Text('This testing note for Doctor-Mobile App'),
+                                          padding: EdgeInsets.all(8),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
+                        ),
+                      ],
                     );
                   } else if (snapshot.hasError) {
                     return Text("${snapshot.error}");
@@ -122,7 +179,6 @@ class _GetUsersState extends State<GetUsers> {
                                   EdgeInsets.only(left: 8, right: 8, bottom: 5),
                               child: ListTile(
                                 onTap: () {
-                                  print('card-tapped !');
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
@@ -131,6 +187,7 @@ class _GetUsersState extends State<GetUsers> {
                                 },
                                 leading: Icon(Icons.person),
                                 title: Text(row.employeeName),
+                                trailing: Text('23,Nov 13:45 PM'),
                                 subtitle: Text(row.employeeAge +
                                     '  |  ' +
                                     row.employeeSalary),
