@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../users/get-users.dart';
 import '../calculator/index.dart';
+import '../views/auth/login.dart';
 
 class DrawerLayout extends StatelessWidget {
   @override
@@ -50,7 +51,17 @@ class DrawerLayout extends StatelessWidget {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => Calculator()));
             },
-          )
+          ),
+          //Logout
+          ListTile(
+            leading: Icon(Icons.delete),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Login()),
+              );
+            },
+          ),
         ],
       ),
     );
